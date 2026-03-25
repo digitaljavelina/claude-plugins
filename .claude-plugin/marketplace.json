@@ -1,0 +1,14 @@
+{
+  "name": "digitaljavelina-plugins",
+  "owner": {
+    "name": "Digital Javelina"
+  },
+  "plugins": [
+    {
+      "name": "changelog-monitor",
+      "source": "./plugins/changelog-monitor",
+      "description": "Monitor Claude Code changelog for new versions with macOS notifications",
+      "version": "1.0.0"
+    }
+  ]
+}
