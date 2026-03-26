@@ -1,6 +1,7 @@
 ---
 name: changelog-monitor
 description: Check the Claude Code changelog for new versions. Use with /loop to monitor continuously, or run once to see the latest changes.
+user-invocable: true
 ---
 
 # Claude Code Changelog Monitor
