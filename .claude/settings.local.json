@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(chmod +x /Users/michaelhenry/Documents/Projects/claude/claude-plugins/bump-version.sh)"
+      "Bash(chmod +x /Users/michaelhenry/Documents/Projects/claude/claude-plugins/bump-version.sh)",
+      "Bash(chmod +x /Users/michaelhenry/Documents/Projects/claude/claude-plugins/.git/hooks/pre-commit)"
     ]
   }
 }
