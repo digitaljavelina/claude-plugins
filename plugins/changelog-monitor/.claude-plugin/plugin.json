@@ -1,0 +1,6 @@
+{
+  "name": "changelog-monitor",
+  "description": "Monitor Claude Code changelog for new versions with macOS, Linux, and Windows notifications",
+  "version": "1.1.1",
+  "skills": "./.claude/skills"
+}
