@@ -12,9 +12,8 @@ This skill fetches the Claude Code changelog from GitHub and reports on new vers
 
 1. Fetch the changelog from https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md
 2. Compare against the last seen version stored in `~/.claude-changelog-last-version`
-3. Report any new versions with their changes
+3. Report any new versions with their changes (always print the latest changelog entry regardless)
 4. Update the stored version
-5. Update the stored version
 
 ## Execution Steps
 
@@ -42,6 +41,8 @@ If there are new versions since the last seen:
 
 If no new versions:
 - Report "Claude Code is up to date at version X.Y.Z"
+
+In both cases, always display the latest changelog entry (the most recent version and its changes).
 
 ### Step 4: Save Current Version
 
@@ -71,6 +72,10 @@ When up to date:
 
 ```
 ✓ Claude Code is up to date (version X.Y.Z)
+
+## Latest: Version X.Y.Z
+- Change 1
+- Change 2
 ```
 
 ## Loop Mode
