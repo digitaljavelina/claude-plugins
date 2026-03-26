@@ -14,7 +14,7 @@ This skill fetches the Claude Code changelog from GitHub and reports on new vers
 2. Compare against the last seen version stored in `~/.claude-changelog-last-version`
 3. Report any new versions with their changes
 4. Update the stored version
-5. If running with `/loop`, send a system notification when new versions are detected (macOS, Linux, and Windows supported)
+5. Update the stored version
 
 ## Execution Steps
 
@@ -39,31 +39,6 @@ Parse the changelog to find versions. Version headers look like:
 
 If there are new versions since the last seen:
 1. Display each new version with its changes
-2. Send a system notification using the appropriate command for the detected OS:
-   ```bash
-   OS=$(uname -s 2>/dev/null || echo "Windows")
-   case "$OS" in
-     Darwin)
-       osascript -e 'display notification "New version X.Y.Z released" with title "Claude Code Update"'
-       ;;
-     Linux)
-       notify-send "Claude Code Update" "New version X.Y.Z released" 2>/dev/null || true
-       ;;
-     MINGW*|CYGWIN*|MSYS*)
-       powershell.exe -Command "
-         Add-Type -AssemblyName System.Windows.Forms;
-         \$n = New-Object System.Windows.Forms.NotifyIcon;
-         \$n.Icon = [System.Drawing.SystemIcons]::Information;
-         \$n.BalloonTipTitle = 'Claude Code Update';
-         \$n.BalloonTipText = 'New version X.Y.Z released';
-         \$n.Visible = \$true;
-         \$n.ShowBalloonTip(5000);
-         Start-Sleep 5;
-         \$n.Dispose()
-       " 2>/dev/null || true
-       ;;
-   esac
-   ```
 
 If no new versions:
 - Report "Claude Code is up to date at version X.Y.Z"
@@ -106,8 +81,3 @@ When invoked with `/loop`, this skill will:
 3. Wait for the next loop iteration
 4. Repeat
 
-The system notification ensures you're alerted even if the terminal isn't in focus.
-
-- **macOS**: Uses `osascript` (built-in, no dependencies)
-- **Linux**: Uses `notify-send` (requires `libnotify-bin`; fails silently if unavailable)
-- **Windows**: Uses PowerShell tray balloon tip via `System.Windows.Forms` (built-in, no dependencies)
