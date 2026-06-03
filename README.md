@@ -20,27 +20,11 @@ Then install any plugin:
 
 ## Available Plugins
 
-### changelog-monitor
-
-Monitor the Claude Code changelog for new versions.
-
-**Usage:**
-
-- `/changelog-monitor` — Check once for new versions
-- `/loop /changelog-monitor` — Monitor continuously
-
-### migrate-ai-config
-
-Interactively migrate Claude Code and/or Codex config (skills, hooks, plugins, commands, agents, MCP servers, prompts, settings) between macOS, Windows, and Linux. Asks source/target OS and tools, then emits a tailored migration playbook.
-
-### setup-audit
-
-Audit a Claude Code installation on two tracks:
-
-- **Instruction files** (`CLAUDE.md`, skills, settings, hooks) for bloat, conflicts, and redundancy.
-- **Skill & plugin inventory** for duplicate and overlapping capabilities.
-
-Reports findings (scored rule table, cut list, conflict report, overlap clusters, removal-candidate list), then offers to remove flagged items after confirmation, backing up everything first.
+| Plugin              | Version | Description                                                                                                                                                                                                                                                                                                                      |
+| ------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `changelog-monitor` | 1.1.3   | Monitor the Claude Code changelog for new versions. Run `/changelog-monitor` to check once, or `/loop /changelog-monitor` to monitor continuously.                                                                                                                                                                               |
+| `migrate-ai-config` | 1.0.3   | Interactively migrate Claude Code and/or Codex config (skills, hooks, plugins, commands, agents, MCP servers, prompts, settings) between macOS, Windows, and Linux. Asks source/target OS and tools, then emits a tailored migration playbook.                                                                                   |
+| `setup-audit`       | 1.0.0   | Audit a Claude Code installation on two tracks: instruction files (`CLAUDE.md`, skills, settings, hooks) for bloat, conflicts, and redundancy, and the skill/plugin inventory for duplicate and overlapping capabilities. Reports findings, then offers to remove flagged items after confirmation, backing up everything first. |
 
 ## Repo layout
 
