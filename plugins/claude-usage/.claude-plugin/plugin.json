@@ -1,0 +1,21 @@
+{
+  "name": "claude-usage",
+  "version": "1.0.0",
+  "description": "Report Claude Code usage from local session transcripts: total active hours, session count, date range, and per-month / per-project breakdowns. Estimates hands-on-keyboard time by capping idle gaps; points to ccusage for token and cost data.",
+  "author": {
+    "name": "Digital Javelina",
+    "email": "mike@digitaljavelina.com"
+  },
+  "homepage": "https://github.com/digitaljavelina/claude-plugins",
+  "repository": "https://github.com/digitaljavelina/claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "usage",
+    "hours",
+    "time-tracking",
+    "stats",
+    "transcripts",
+    "analytics"
+  ]
+}

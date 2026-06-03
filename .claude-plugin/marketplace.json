@@ -21,6 +21,12 @@
       "source": "./plugins/setup-audit",
       "description": "Audit a Claude Code installation for bloat, conflicts, and duplicate/overlapping skills and plugins",
       "version": "1.0.0"
+    },
+    {
+      "name": "claude-usage",
+      "source": "./plugins/claude-usage",
+      "description": "Report Claude Code usage from local transcripts: total active hours, sessions, date range, and per-month / per-project breakdowns",
+      "version": "1.0.0"
     }
   ]
 }

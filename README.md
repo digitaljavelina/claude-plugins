@@ -16,6 +16,7 @@ Then install any plugin:
 /plugin install changelog-monitor@digitaljavelina-plugins
 /plugin install migrate-ai-config@digitaljavelina-plugins
 /plugin install setup-audit@digitaljavelina-plugins
+/plugin install claude-usage@digitaljavelina-plugins
 ```
 
 ## Available Plugins
@@ -25,6 +26,7 @@ Then install any plugin:
 | `changelog-monitor` | 1.1.3   | Monitor the Claude Code changelog for new versions. Run `/changelog-monitor` to check once, or `/loop /changelog-monitor` to monitor continuously.                                                                                                                                                                               |
 | `migrate-ai-config` | 1.0.3   | Interactively migrate Claude Code and/or Codex config (skills, hooks, plugins, commands, agents, MCP servers, prompts, settings) between macOS, Windows, and Linux. Asks source/target OS and tools, then emits a tailored migration playbook.                                                                                   |
 | `setup-audit`       | 1.0.0   | Audit a Claude Code installation on two tracks: instruction files (`CLAUDE.md`, skills, settings, hooks) for bloat, conflicts, and redundancy, and the skill/plugin inventory for duplicate and overlapping capabilities. Reports findings, then offers to remove flagged items after confirmation, backing up everything first. |
+| `claude-usage`      | 1.0.0   | Report Claude Code usage from local session transcripts: total active hours, session count, date range, and per-month / per-project breakdowns. Estimates hands-on-keyboard time by capping idle gaps; points to `ccusage` for token and cost data.                                                                              |
 
 ## Repo layout
 
