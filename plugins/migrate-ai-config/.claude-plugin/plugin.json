@@ -1,0 +1,22 @@
+{
+  "name": "migrate-ai-config",
+  "version": "1.0.3",
+  "description": "Interactively migrate Claude Code and/or Codex config (skills, hooks, plugins, commands, agents, MCP servers, prompts, settings) between macOS, Windows, and Linux. Asks source/target OS and tools, then emits a tailored migration playbook.",
+  "author": {
+    "name": "Digital Javelina",
+    "email": "mike@digitaljavelina.com"
+  },
+  "homepage": "https://github.com/digitaljavelina/claude-plugins",
+  "repository": "https://github.com/digitaljavelina/claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "migration",
+    "claude-code",
+    "codex",
+    "macos",
+    "windows",
+    "linux",
+    "setup",
+    "onboarding"
+  ]
+}

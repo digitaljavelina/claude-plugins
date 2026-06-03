@@ -1,0 +1,21 @@
+{
+  "name": "setup-audit",
+  "version": "1.0.0",
+  "description": "Audit a Claude Code installation on two tracks: instruction files (CLAUDE.md, skills, settings, hooks) for bloat/conflicts/redundancy, and the installed skill/plugin inventory for duplicate and overlapping capabilities. Reports findings, then offers to remove flagged items after confirmation with backups.",
+  "author": {
+    "name": "Digital Javelina",
+    "email": "mike@digitaljavelina.com"
+  },
+  "homepage": "https://github.com/digitaljavelina/claude-plugins",
+  "repository": "https://github.com/digitaljavelina/claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "audit",
+    "cleanup",
+    "skills",
+    "plugins",
+    "configuration",
+    "deduplication"
+  ]
+}
