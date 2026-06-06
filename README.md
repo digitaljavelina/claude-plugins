@@ -37,7 +37,15 @@ Most plugins run with no extra setup. The exception is `yt-tutorial`, which shel
 - [`uv`](https://docs.astral.sh/uv/) — runs the bundled transcript script and auto-installs its Python dependencies (`youtube-transcript-api`) on first use, so you don't install those yourself.
 - [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) — pulls the video title, channel, and description.
 
-On macOS both are available via Homebrew: `brew install uv yt-dlp`.
+Install both for your platform:
+
+- **macOS** (Homebrew): `brew install uv yt-dlp`
+- **Linux**:
+  - `uv` — `curl -LsSf https://astral.sh/uv/install.sh | sh`
+  - `yt-dlp` — via your package manager (`sudo apt install yt-dlp`, `sudo dnf install yt-dlp`, `sudo pacman -S yt-dlp`) or `pipx install yt-dlp` for the newest release.
+- **Windows** (PowerShell):
+  - `uv` — `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`
+  - `yt-dlp` — `winget install yt-dlp.yt-dlp` (or `scoop install yt-dlp`).
 
 ## Repo layout
 
