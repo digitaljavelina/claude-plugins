@@ -33,12 +33,6 @@
       "source": "./plugins/yt-tutorial",
       "description": "Turn a YouTube video into a complete, beginner-friendly, publication-ready tutorial: fetch the transcript, research examples, and rewrite in a conversational explainer voice",
       "version": "1.0.0"
-    },
-    {
-      "name": "recording-digest",
-      "source": "./plugins/recording-digest",
-      "description": "Digest a recording or transcript on disk into a structured summary, entirely locally (mlx-whisper for audio, the running Claude for structuring, no external API). Includes matter-intake (legal client-intake summary) and meeting-digest (general TL;DR / decisions / action items).",
-      "version": "1.0.0"
     }
   ]
 }
