@@ -61,18 +61,3 @@ Bump a plugin version:
 ```sh
 ./bump-version.sh <plugin-name> [patch|minor|major]
 ```
-
-## Colophon
-
-Every plugin here is a [Claude Code](https://code.claude.com) skill: a `SKILL.md`
-of instructions plus, where needed, bundled Python or shell scripts that do the
-deterministic work. They lean on the standard library and small CLI tools rather
-than heavy dependencies, so most run with no setup. The marketplace itself is
-just a `marketplace.json` manifest pointing at each plugin's `plugin.json`.
-
-Everything was built with Claude Code, edited in VS Code, and run from
-[Warp](https://www.warp.dev). Versions are bumped with the bundled
-`bump-version.sh`, and commits are signed.
-
-A colophon is a tradition borrowed from print publishing: a note describing the
-tools and methods used to make a thing. This is that, for a plugin marketplace.
