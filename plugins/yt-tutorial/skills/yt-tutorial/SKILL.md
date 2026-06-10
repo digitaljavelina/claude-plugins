@@ -54,7 +54,7 @@ What video would you like to turn into a tutorial?
 Provide:
 
 1. **YouTube URL** (required)
-2. **Destination folder** (optional) — Default: the current working directory
+2. **Destination folder** (optional) — Default: `Inbox/` in the Obsidian vault
 3. **Specific examples or use cases to include** (optional) — If not provided, I'll research relevant ones
 
 **Wait for response before proceeding.**
@@ -87,5 +87,5 @@ A completed yt-tutorial:
 - Has: title, introduction, major sections, conclusion, quick reference table, italicized closing
 - Includes researched examples/use cases (unless user provided their own)
 - No timestamps remain anywhere in the document
-- Saved to disk and ready to publish
+- Saved to the vault and ready to publish
   </success_criteria>
