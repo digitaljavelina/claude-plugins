@@ -1,7 +1,7 @@
 {
   "name": "migrate-ai-config",
-  "version": "1.0.3",
-  "description": "Interactively migrate Claude Code and/or Codex config (skills, hooks, plugins, commands, agents, MCP servers, prompts, settings) between macOS, Windows, and Linux. Asks source/target OS and tools, then emits a tailored migration playbook.",
+  "version": "1.1.0",
+  "description": "Interactively migrate Claude Code and/or Codex config (skills, hooks, plugins, commands, agents, MCP servers, prompts, settings) and optionally chat history (.jsonl transcripts) between macOS, Windows, and Linux. Asks source/target OS, tools, and history scope, then emits a tailored migration playbook.",
   "author": {
     "name": "Digital Javelina",
     "email": "mike@digitaljavelina.com"
@@ -17,6 +17,8 @@
     "windows",
     "linux",
     "setup",
-    "onboarding"
+    "onboarding",
+    "chat-history",
+    "transcripts"
   ]
 }
