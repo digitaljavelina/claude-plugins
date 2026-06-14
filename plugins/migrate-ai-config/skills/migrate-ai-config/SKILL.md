@@ -159,7 +159,8 @@ find ~/.codex/sessions -name '*.jsonl' -mtime -90 -print0 | tar --null -czf code
 NEWENC=$(printf '%s' "$HOME" | sed 's#[/.]#-#g')     # e.g. -Users-newuser  (or -home-newuser on Linux)
 OLDENC="-Users-olduser"                               # source machine's home, encoded
 cd ~/.claude/projects
-for d in "$OLDENC"*; do [ -e "$d" ] && mv "$d" "$NEWENC${d#"$OLDENC"}"; done
+# mv -- : encoded names start with '-', so terminate option parsing or mv treats them as flags
+for d in "$OLDENC"*; do [ -e "$d" ] && mv -- "$d" "$NEWENC${d#"$OLDENC"}"; done
 # 2. Rewrite absolute paths inside transcripts + todos (sedi helper; while-loop keeps it in-shell).
 find ~/.claude/projects ~/.claude/todos -name '*.jsonl' -print0 \
   | while IFS= read -r -d '' f; do sedi "s#/Users/olduser#$HOME#g" "$f"; done
