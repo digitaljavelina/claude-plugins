@@ -18,6 +18,7 @@ Then install any plugin:
 /plugin install setup-audit@digitaljavelina-plugins
 /plugin install claude-usage@digitaljavelina-plugins
 /plugin install yt-tutorial@digitaljavelina-plugins
+/plugin install transcript-to-notebooklm@digitaljavelina-plugins
 ```
 
 ## Available Plugins
@@ -29,10 +30,15 @@ Then install any plugin:
 | `setup-audit`       | 1.0.0   | Audit a Claude Code installation on two tracks: instruction files (`CLAUDE.md`, skills, settings, hooks) for bloat, conflicts, and redundancy, and the skill/plugin inventory for duplicate and overlapping capabilities. Reports findings, then offers to remove flagged items after confirmation, backing up everything first. |
 | `claude-usage`      | 1.0.0   | Report Claude Code usage from local session transcripts: total active hours, session count, date range, and per-month / per-project breakdowns. Estimates hands-on-keyboard time by capping idle gaps; points to `ccusage` for token and cost data.                                                                              |
 | `yt-tutorial`       | 1.0.0   | Turn a YouTube video into a complete, beginner-friendly, publication-ready tutorial. Fetches the transcript with `yt-dlp` / `youtube-transcript-api`, optionally researches real-world examples, and rewrites the content in a conversational explainer voice with every code block decoded line by line.                         |
+| `transcript-to-notebooklm` | 1.0.0 | Clean `.srt` / `.vtt` subtitles or any timestamped transcript into plain `.txt` (strips timecodes, cue indices, and tags, de-dups rolling captions, reflows into paragraphs), then create a NotebookLM notebook and upload the cleaned files as sources. Handles a whole mixed folder in one pass and passes already-clean transcripts through untouched. |
 
 ### Prerequisites
 
-Most plugins run with no extra setup. The exception is `yt-tutorial`, which shells out to external tools to fetch a video's transcript and metadata. Before using it, install:
+Most plugins run with no extra setup. Two have external dependencies: `yt-tutorial` and `transcript-to-notebooklm`.
+
+#### yt-tutorial
+
+`yt-tutorial` shells out to external tools to fetch a video's transcript and metadata. Before using it, install:
 
 - [`uv`](https://docs.astral.sh/uv/) — runs the bundled transcript script and auto-installs its Python dependencies (`youtube-transcript-api`) on first use, so you don't install those yourself.
 - [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) — pulls the video title, channel, and description.
@@ -46,6 +52,15 @@ Install both for your platform:
 - **Windows** (PowerShell):
   - `uv` — `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`
   - `yt-dlp` — `winget install yt-dlp.yt-dlp` (or `scoop install yt-dlp`).
+
+#### transcript-to-notebooklm
+
+Cleaning transcripts into `.txt` needs only Python 3 (standard library, nothing to install). The NotebookLM step needs the [`nlm`](https://pypi.org/project/notebooklm-mcp-cli/) CLI to create the notebook and upload sources:
+
+- Install: `uv tool install notebooklm-mcp-cli` (or `pipx install notebooklm-mcp-cli`), which provides the `nlm` command.
+- Authenticate once with `nlm login` (opens a browser to capture your Google/NotebookLM session). Sessions are short-lived; re-run `nlm login` if it reports expired cookies.
+
+If you only want clean `.txt` files and not a notebook, you can use the plugin without `nlm` and skip the upload step.
 
 ## Repo layout
 

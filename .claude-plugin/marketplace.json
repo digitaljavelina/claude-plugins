@@ -33,6 +33,12 @@
       "source": "./plugins/yt-tutorial",
       "description": "Turn a YouTube video into a complete, beginner-friendly, publication-ready tutorial: fetch the transcript, research examples, and rewrite in a conversational explainer voice",
       "version": "1.0.0"
+    },
+    {
+      "name": "transcript-to-notebooklm",
+      "source": "./plugins/transcript-to-notebooklm",
+      "description": "Clean .srt/.vtt subtitles or timestamped transcripts into plain .txt, then create a NotebookLM notebook and upload them as sources via the nlm CLI",
+      "version": "1.0.0"
     }
   ]
 }

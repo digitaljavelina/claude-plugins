@@ -1,0 +1,22 @@
+{
+  "name": "transcript-to-notebooklm",
+  "version": "1.0.0",
+  "description": "Convert .srt / .vtt subtitle files or any timestamped video transcript into clean, timestamp-free .txt, then create a new NotebookLM notebook (prompting for its name) and upload the cleaned files as sources. Strips cue indices, timecodes, and formatting tags, de-dups rolling captions, reflows into readable paragraphs, and passes already-clean transcripts through untouched, so a whole mixed folder converts in one pass. Uploads are paced and idempotent to survive NotebookLM rate limits.",
+  "author": {
+    "name": "Digital Javelina",
+    "email": "mike@digitaljavelina.com"
+  },
+  "homepage": "https://github.com/digitaljavelina/claude-plugins",
+  "repository": "https://github.com/digitaljavelina/claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "notebooklm",
+    "transcript",
+    "subtitles",
+    "srt",
+    "vtt",
+    "captions",
+    "video"
+  ]
+}
