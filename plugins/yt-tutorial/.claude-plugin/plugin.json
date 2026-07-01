@@ -1,7 +1,7 @@
 {
   "name": "yt-tutorial",
   "version": "1.0.0",
-  "description": "Transform a YouTube video into a complete, beginner-friendly, publication-ready tutorial. Fetches the transcript with yt-dlp / youtube-transcript-api, optionally researches real-world examples, and rewrites the content in a conversational explainer voice with every code block decoded line by line.",
+  "description": "Transform a YouTube video into a complete, intermediate-level, publishable tutorial. Fetches the transcript with yt-dlp / youtube-transcript-api, optionally researches real-world examples, and rewrites the content in a direct explainer voice pitched at a competent reader new to the topic, decoding the non-obvious parts and naming the real gotchas.",
   "author": {
     "name": "Digital Javelina",
     "email": "mike@digitaljavelina.com"

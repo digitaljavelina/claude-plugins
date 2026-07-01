@@ -2,35 +2,34 @@
 
 ## Tutorial Structure
 
-Every tutorial follows this skeleton. Sections can be added or removed based on the topic, but the ordering and voice conventions are fixed.
+Every tutorial follows this skeleton. Sections can be added or removed based on the topic. Right-size the piece to the topic. Do not pad to hit a length. See the length note at the end.
 
 ### 1. Title (H1)
 
 Bold, specific, and outcome-oriented. Promise the reader something concrete.
 
-Pattern: **[Subject] [Verb Phrase That Promises an Outcome] — [Supplementary Hook]**
+Pattern: **[Subject] [Verb Phrase That Promises an Outcome], [Supplementary Hook]**
 
 Examples:
 
-- "Claude Code Has a Secret Command That Makes It Smarter Over Time — Here's How to Use It"
-- "You Can Run a Full Home Server on a $35 Raspberry Pi — Here's the Setup I Use"
-- "NixOS Lets You Version-Control Your Entire Operating System — Here's How to Get Started"
+- "Claude Code Hooks Let You Enforce Rules the Model Can't Ignore"
+- "Run a Full Home Server on a $35 Raspberry Pi: the Setup I Actually Use"
+- "NixOS Version-Controls Your Whole OS. Here's the Reproducible Setup."
 
 Avoid:
 
 - "A Guide to X" (boring)
-- "How to Do X" (acceptable but try for more energy)
-- "Everything You Need to Know About X" (too vague, sounds like filler)
+- "Everything You Need to Know About X" (vague filler)
 
 ### 2. Subtitle / Deck (bold paragraph, right after title)
 
-One or two sentences that tell the reader exactly what the tutorial covers and who it's for. Set expectations.
+One or two sentences: what the piece covers and the angle. State the level and any assumed baseline plainly rather than reassuring.
 
-Pattern: **"[What we'll cover], [why it matters], and [who this is for] — [permission slip]."**
+Pattern: **"[What we cover] and [the non-obvious payoff]. Assumes [baseline]."**
 
 Example:
 
-> **There's a hidden command in Claude Code called `/insights` that studies how you work and then tells you exactly how to make it work better for you. Let's walk through what it does, why it matters, and how to use it — even if you've never opened a terminal before.**
+> **`/insights` reads how you actually work and then writes the fixes for the friction it finds. This walks through what it does, how the feedback loop works, and where it surprises you. Assumes you already use Claude Code day to day.**
 
 ### 3. Horizontal Rule
 
@@ -38,89 +37,92 @@ Example:
 ---
 ```
 
-### 4. Core Concept Section (H2)
+### 4. Prerequisites & Assumptions (H2, brief)
 
-Explain WHAT the thing is and WHY it matters. No instructions yet — just understanding.
+A tight note, not a beginner level-set. State what the reader should already know and what needs to be installed or configured. One short paragraph or a few bullets. Skip it entirely if there is nothing non-trivial to flag.
 
 Pattern:
 
-- "So What Is [X]?"
-- Describe what it does in plain language
-- List the specific questions it answers or problems it solves (bullet list)
-- Highlight the most important aspect: "That last point is the important one. We'll get to it shortly."
+- "Assumes: [baseline knowledge]. You need: [tools/versions installed]."
+- Flag only the prerequisites that actually trip people up.
 
 ### 5. Horizontal Rule
 
-### 6. How-To Section (H2)
+### 6. Core Concept Section (H2)
 
-Step-by-step instructions. Numbered steps. Each step is short and focused.
+Explain WHAT the thing is and its mental model, then WHY it matters. Get to the model fast.
 
 Pattern:
 
-- "How to [Do the Thing]"
-- "This part is simple." (if it is — set the tone)
-- **Step 1:** [Instruction] + context for beginners
-- **Step 2:** [Instruction]
-- **Step 3:** [Instruction]
-- Close with what to expect: "That's it. Claude will think for a bit and then..."
+- "How [X] Actually Works"
+- Describe the mechanism in precise, plain language
+- The tradeoffs: when you reach for it, when you don't, what it replaces
+- Highlight the load-bearing point: "That last part is the one that matters. More on it below."
 
 ### 7. Horizontal Rule
 
-### 8. What to Expect / Output Section (H2)
+### 8. How-To Section (H2)
 
-Show the reader what the result looks like. Walk through each part.
+Step-by-step instructions. Numbered steps. Each step focused. Lead with the decision context, not just the mechanics.
 
 Pattern:
 
-- "What [the Output] Looks Like"
-- Describe each section/component of the output
-- Use **bold labels** followed by an em-dash explanation
-- Example: **At a Glance** — A quick summary. What's working well, what's causing problems.
+- "Setting It Up"
+- **Step 1:** [Instruction] + the why or the gotcha
+- **Step 2:** [Instruction]
+- **Step 3:** [Instruction]
+- Close with what to expect and the first thing that usually goes wrong
 
 ### 9. Horizontal Rule
 
-### 10. Deep Dive Sections (H2, multiple)
+### 10. What to Expect / Output Section (H2)
 
-The meat of the tutorial. Each section covers one major sub-topic.
-
-Pattern for each:
-
-- H2 with an engaging title (can use "The Part That Surprised Me" framing)
-- Open with WHY this matters
-- Show a concrete example (code block, config, screenshot description)
-- Follow with the line-by-line breakdown
-- Include a practical note about variations or gotchas
-- Optionally use H3 subsections (Fix 1, Fix 2, Fix 3...)
-
-### 11. Horizontal Rule
-
-### 12. The Bigger Picture Section (H2)
-
-Zoom out. Explain how everything fits together.
+Show what the result looks like. Walk through the parts that are not self-evident.
 
 Pattern:
 
-- "Here's the bigger picture of what's happening:"
-- Numbered list showing the workflow/feedback loop
-- Explain why this compounds over time
-- Optionally include supporting data or metrics
+- "What You Get"
+- Describe each meaningful part of the output
+- Use **bold labels** followed by a short explanation
+- Example: **At a Glance:** a quick summary of what is working and what is causing friction.
+
+### 11. Horizontal Rule
+
+### 12. Deep Dive Sections (H2, multiple)
+
+The meat. Each section covers one sub-topic in real depth.
+
+Pattern for each:
+
+- H2 with a direct, specific title
+- Open with why this matters (the decision or the tradeoff)
+- Show a concrete, realistic example (code, config, real output)
+- Decode the non-obvious parts
+- Include the practical gotcha, edge case, or variation
+- Optionally use H3 subsections
 
 ### 13. Horizontal Rule
 
-### 14. Advanced / What's Next Section (H2, optional)
+### 14. The Bigger Picture Section (H2, optional)
 
-For readers who want to go further. Keep it brief — just plant seeds.
+Zoom out. Explain how the pieces fit and why it compounds. Keep it earned, not a summary for its own sake.
 
 ### 15. Horizontal Rule
 
-### 16. Quick Reference Table (H2)
+### 16. Advanced / What's Next Section (H2, optional)
 
-Summarize every command, concept, or tool mentioned in the tutorial.
+Where to go further: deeper config, related tools, the harder version of the problem. Point to the real next step, briefly.
+
+### 17. Horizontal Rule
+
+### 18. Quick Reference Table (H2)
+
+Summarize every command, concept, or tool mentioned.
 
 Format:
 
 ```markdown
-## Quick Reference: [Topic] Mentioned in This Guide
+## Quick Reference: [Topic]
 
 | [Thing]           | What It Does      |
 | ----------------- | ----------------- |
@@ -128,15 +130,23 @@ Format:
 | `another-command` | Brief description |
 ```
 
-### 17. Horizontal Rule
+### 19. Horizontal Rule
 
-### 18. Closing Paragraph (italicized)
+### 20. Closing (optional, brief)
 
-Normalize difficulty. Encourage incremental learning. End warmly.
+Not a reassurance paragraph. If you close, close like a peer: the honest limitation, the next thing worth trying, or the tradeoff to keep in mind. Skip it entirely if the Quick Reference is a cleaner ending.
 
 Pattern:
 
-> _If any of this felt overwhelming, that's normal. [Acknowledge the complexity]. Start with just [one simple thing]. You don't have to [do everything at once]. Pick one [thing], try it, and see if it helps. That's how everyone learns this stuff — one piece at a time._
+> "The main limitation is [X]. If you push past the basics, the next thing to reach for is [Y]. [One honest note on when this is or isn't worth it.]"
+
+Do not normalize difficulty, do not say "one piece at a time," do not reassure. The reader is competent.
+
+## Length
+
+Default to a focused, right-sized tutorial. Cover the topic and stop. Do not pad to a word count.
+
+Long-form, publication-ready blog treatment (fuller hooks, bigger-picture framing, 2,000+ words) is an explicit mode. Apply it only when the user asks for a long-form blog post. Otherwise keep it lean.
 
 </structure_template>
 
@@ -144,34 +154,35 @@ Pattern:
 
 ## Transition Patterns Between Sections
 
-Sections should flow naturally. Here are transition patterns that maintain voice:
+Sections should flow. Keep transitions direct.
 
-**Core Concept → How-To:**
+**Core Concept to How-To:**
 
-> "Let's set it up." / "Here's what you do." / "This part is simple."
+> "Here's how to set it up." / "The setup is short."
 
-**How-To → Output:**
+**How-To to Output:**
 
-> "Once you run that, here's what you'll see."
+> "Once that runs, here's what you get."
 
-**Output → Deep Dive:**
+**Output to Deep Dive:**
 
-> "The [section name] is where it gets useful." / "Here's the thing that makes this more than just a [basic thing]."
+> "The useful part is [X]." / "Here's where it stops being a toy."
 
-**Deep Dive → Deep Dive:**
+**Deep Dive to Deep Dive:**
 
-> Use H3 sub-headers (Fix 1, Fix 2) or start the new section by connecting it to the previous: "Beyond [previous topic], the report also includes..."
+> Use H3 sub-headers, or connect to the previous: "Beyond [previous topic], there's also..."
 
-**Deep Dive → Bigger Picture:**
+**Deep Dive to Bigger Picture:**
 
-> "Here's the bigger picture of what's happening:" / "So why does all of this matter?"
+> "Step back and here's what's actually happening:" / "So why does this compound?"
 
-**Bigger Picture → Quick Reference:**
+**Bigger Picture to Quick Reference:**
 
-> (Just use a horizontal rule. No transition needed.)
+> (Just use a horizontal rule.)
 
-**Quick Reference → Closing:**
+**Quick Reference to Closing:**
 
-> (Just use a horizontal rule. The closing paragraph stands alone.)
+> (Just use a horizontal rule.)
 
 </section_transitions>
+</structure_template>

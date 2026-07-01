@@ -2,39 +2,39 @@
 
 ## Title Creation
 
-Create a bold, hook-y title that follows this title pattern:
+Create a bold, specific title that follows this pattern:
 
-**Pattern:** `[Subject] [Verb Phrase That Promises an Outcome] — [Supplementary Hook]`
+**Pattern:** `[Subject] [Verb Phrase That Promises an Outcome], [Supplementary Hook]`
 
 Examples:
-- "Docker Lets You Run Anything in Isolated Containers — Here's How to Set It Up From Scratch"
-- "Tailscale Turns Your Devices Into a Private Network — No Port Forwarding Required"
-- "NixOS Lets You Version-Control Your Entire OS — Here's the Setup That Changed How I Manage Servers"
+- "Docker Runs Anything in Isolated Containers. Here's the Setup From Scratch."
+- "Tailscale Turns Your Devices Into a Private Network, No Port Forwarding"
+- "NixOS Version-Controls Your Whole OS: the Setup That Changed How I Manage Servers"
 
-Follow the title with a bold subtitle/deck paragraph that tells the reader what they'll learn and who it's for.
+Follow the title with a bold deck paragraph that states what the reader will learn and the assumed baseline.
 
 ## Document Organization
 
 ### Required Sections (in order)
 
-1. **Title** (H1) — Bold, outcome-oriented, with hook
-2. **Subtitle/Deck** — Bold paragraph setting expectations
+1. **Title** (H1): Bold, outcome-oriented, specific
+2. **Deck** (bold paragraph): States the angle and the assumed baseline
 3. **Horizontal rule** (`---`)
-4. **"First Things First" / Context Section** (H2) — Level-set on prerequisites
+4. **Prerequisites & Assumptions** (H2, brief): What the reader should already know and what needs installing. Skip if nothing non-trivial.
 5. **Horizontal rule**
-6. **Core Concept** (H2) — What is this thing and why does it matter
+6. **Core Concept** (H2): The mental model, then why it matters and the tradeoff
 7. **Horizontal rule**
-8. **Main Content Sections** (H2 each) — The bulk of the tutorial, organized thematically
+8. **Main Content Sections** (H2 each): The bulk of the tutorial, organized thematically
 9. **Horizontal rule**
-10. **Quick Reference Table** (H2) — Every command/concept summarized
+10. **Quick Reference Table** (H2): Every command/concept summarized
 11. **Horizontal rule**
-12. **Closing Paragraph** — Italicized, reassuring, encourages incremental learning
+12. **Closing** (optional, brief): A peer note, not reassurance. The honest limitation or the real next step.
 
 ### Section Heading Rules
 
 - Major sections: `##` with title case (e.g., `## Installation and Basic Setup`)
 - Subsections: `###` or **bold text** (e.g., `**Initial Configuration**`)
-- Make headings descriptive — "Setting Up Your First Container" not "Setup"
+- Make headings descriptive: "Setting Up Your First Container" not "Setup"
 - Never go deeper than H3; restructure instead
 - Horizontal rules between major topic shifts only
 
@@ -42,17 +42,17 @@ Follow the title with a bold subtitle/deck paragraph that tells the reader what 
 
 **Emphasis:**
 - **Bold**: Key terms on first introduction, subsection headings, important concepts
-- *Italics*: Technical modes, specific terms on second+ use, the closing paragraph
+- *Italics*: Light emphasis, technical modes, terms on second+ use
 - `Code formatting`: Commands, filenames, config values, anything the reader would type
 
 **Typography:**
-- Em dashes (—) for asides, not parentheses or semicolons
+- Periods, not em dashes. For an aside, use a period and a new sentence, or parentheses. Never a U+2014 em dash.
 - No emojis in prose
-- Short paragraphs (2-4 sentences maximum)
+- Focused paragraphs; a dense paragraph is fine when explaining a real mechanism or tradeoff
 - Single-sentence paragraphs fine for emphasis
 
 **Bullet Points:**
-- Use sparingly — only for listing options, tips, or related items
+- Use sparingly, only for listing options, tips, or related items
 - Not for general prose or explanations
 - Bold the first few words when items need scanning
 
@@ -62,11 +62,11 @@ Follow the title with a bold subtitle/deck paragraph that tells the reader what 
 
 The transcript is raw material. Transform it by:
 
-1. **Stripping ALL timestamps** — No trace of time markers anywhere
-2. **Reorganizing thematically** — Group related content together even if discussed at different points in the video. Move from foundational to advanced.
-3. **Adding voice patterns** — Apply the Analogy Bridge, Permission Slip, Line-by-Line Decoder, and Motivation-First Setup patterns from the voice guide
-4. **Expanding explanations** — If the speaker assumed knowledge, add the beginner-friendly explanation. Every technical term gets defined on first use.
-5. **Formatting code/commands** — Put all commands in code blocks with language tags. Follow EVERY code block with a plain-English breakdown.
+1. **Stripping ALL timestamps**: No trace of time markers anywhere
+2. **Reorganizing thematically**: Group related content together even if discussed at different points in the video. Move from foundational to advanced.
+3. **Applying voice patterns**: Use Precise Framing, Gotchas Over Reassurance, Decode the Non-Obvious, and Motivation and Tradeoffs First from the voice guide
+4. **Explaining at intermediate altitude**: Where the speaker assumed tool-specific knowledge, add the explanation. Define tool-specific terms on first use. Assume standard tooling (terminals, flags, git, config files); do not re-teach it.
+5. **Formatting code/commands**: Put all commands in code blocks with language tags. Follow code blocks with a breakdown of the non-obvious parts.
 
 ### What to Preserve Exactly
 
@@ -79,11 +79,11 @@ The transcript is raw material. Transform it by:
 
 ### What to Transform
 
-- Conversational filler → clean prose
-- Chronological ordering → thematic ordering
-- Assumed knowledge → explicit explanations
-- Bare code/commands → code blocks + breakdowns
-- Speaker's voice → tutorial voice (second person, direct, reassuring)
+- Conversational filler to clean prose
+- Chronological ordering to thematic ordering
+- Assumed tool-specific knowledge to explicit explanation (standard tooling stays assumed)
+- Bare code/commands to code blocks plus a breakdown of the non-obvious parts
+- Speaker's voice to tutorial voice (second person, direct)
 
 ## Handling Common Transcript Patterns
 
@@ -95,18 +95,19 @@ The transcript is raw material. Transform it by:
 **When the video includes live demos:**
 - Reconstruct the demo as a step-by-step procedure (Step 1, Step 2...)
 - Format all code/commands in code blocks
-- Add line-by-line breakdowns
+- Add a breakdown of the non-obvious parts
 - Keep all explanations of what the demo shows
 
 **When the speaker goes on tangents:**
 - Reorganize the tangent content into the thematically appropriate section
-- Preserve ALL information from the tangent — don't cut it
+- Preserve ALL information from the tangent, don't cut it
 - Add smooth transitions so it reads naturally in its new location
 
-**When the speaker uses jargon without explaining:**
-- Add the explanation using the Analogy Bridge pattern
-- "Think of it like..." before or alongside the first use
+**When the speaker uses tool-specific jargon without explaining:**
+- Add a concise, precise definition on first use
+- Reach for an analogy only if the concept is genuinely counterintuitive
 - Bold the term on first introduction
+- Do not explain standard tooling the reader already knows
 
 </formatting_requirements>
 
@@ -120,7 +121,7 @@ Research examples and use cases when:
 - The video explains concepts but doesn't show practical applications
 - The video's examples are outdated or specific to the speaker's setup
 - The user didn't provide their own examples
-- Adding a real-world use case would make an abstract concept click
+- A real-world use case would make an abstract concept concrete
 
 ### When NOT to Research
 
@@ -132,15 +133,15 @@ Skip research when:
 ### What to Research
 
 For each major concept in the tutorial, look for:
-1. **A concrete use case** — "Here's a real scenario where you'd use this"
-2. **A minimal working example** — The smallest possible code/config that demonstrates the concept
-3. **Common gotchas** — What trips people up when they first try this
+1. **A real use case**: "Here's a scenario where you'd actually reach for this"
+2. **A minimal working example**: The smallest code/config that demonstrates the concept
+3. **Common gotchas**: What trips people up when they first try this for real
 
 ### How to Integrate Research
 
 - Weave researched examples naturally into the tutorial flow
-- Don't create a separate "Additional Examples" section — place examples where they're relevant
-- Use the Concrete Anchor pattern: show the specific thing, then explain what it demonstrates
+- Don't create a separate "Additional Examples" section, place examples where they're relevant
+- Show the specific thing, then explain what it demonstrates
 - Cite the source if the example comes from official docs (link it with context)
 
 </research_guidelines>
