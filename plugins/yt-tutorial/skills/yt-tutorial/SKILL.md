@@ -28,8 +28,8 @@ Key rules that apply to every paragraph:
 - Assume baseline competence; explain tool-specific terms on first use, not fundamentals
 - Why and the tradeoff before how
 - Analogies only when a concept is genuinely counterintuitive
-- Focused paragraphs; dense is fine when explaining a real mechanism
-- Code blocks followed by a breakdown of the non-obvious parts (not every line)
+- Focused paragraphs, but err toward explaining a bit more; dense is fine when explaining a real mechanism
+- Code blocks followed by a sentence of context plus a breakdown of the non-obvious parts; never a bare command with a one-line label
 - Periods, not em dashes; no emojis in prose
 - Name the real gotcha instead of reassuring
 

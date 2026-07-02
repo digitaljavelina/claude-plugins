@@ -66,7 +66,7 @@ The transcript is raw material. Transform it by:
 2. **Reorganizing thematically**: Group related content together even if discussed at different points in the video. Move from foundational to advanced.
 3. **Applying voice patterns**: Use Precise Framing, Gotchas Over Reassurance, Decode the Non-Obvious, and Motivation and Tradeoffs First from the voice guide
 4. **Explaining at intermediate altitude**: Where the speaker assumed tool-specific knowledge, add the explanation. Define tool-specific terms on first use. Assume standard tooling (terminals, flags, git, config files); do not re-teach it.
-5. **Formatting code/commands**: Put all commands in code blocks with language tags. Follow code blocks with a breakdown of the non-obvious parts.
+5. **Formatting code/commands**: Put all commands in code blocks with language tags. Follow each code block with a sentence of context plus a breakdown of the non-obvious parts, never a bare command with a one-line label.
 
 ### What to Preserve Exactly
 

@@ -98,7 +98,7 @@ Transform a YouTube video into a complete, publishable tutorial that reads like 
 
     **Code block checks (every code example):**
     - [ ] Language specified for syntax highlighting?
-    - [ ] Breakdown of the non-obvious parts immediately after?
+    - [ ] A sentence of context plus a breakdown of the non-obvious parts (not just a one-line label)?
     - [ ] Tool-specific syntax and novel flags decoded, standard shell skipped?
 
     **Content preservation checks:**

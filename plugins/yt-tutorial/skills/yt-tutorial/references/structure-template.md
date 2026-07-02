@@ -144,7 +144,7 @@ Do not normalize difficulty, do not say "one piece at a time," do not reassure. 
 
 ## Length
 
-Default to a focused, right-sized tutorial. Cover the topic and stop. Do not pad to a word count.
+Default to a focused, right-sized tutorial. Cover the topic and stop. Do not pad to a word count. Right-sized does not mean terse: each section should carry explanatory prose that makes the reasoning and the flow clear, not just steps and code blocks with one-line labels.
 
 Long-form, publication-ready blog treatment (fuller hooks, bigger-picture framing, 2,000+ words) is an explicit mode. Apply it only when the user asks for a long-form blog post. Otherwise keep it lean.
 

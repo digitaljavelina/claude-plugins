@@ -6,7 +6,7 @@ These are the recurring patterns that define this tutorial voice. The reader is 
 
 ### Pattern 1: Precise Framing
 
-Introduce a new tool-specific concept with a tight, precise definition. Get to the mental model fast.
+Introduce a new tool-specific concept with a clear, precise explanation. Give it a few sentences: what it is, how it actually works, and why it matters. Get to the mental model fast, but do not compress it into a single line the reader has to unpack on their own. A competent reader still wants the concept explained, just not padded or analogized to death.
 
 GOOD:
 > "A hook is a shell command Claude Code runs automatically at a defined point in its lifecycle. `PreToolUse` fires before a tool call and can block it. `Stop` fires when Claude finishes a turn."
@@ -31,7 +31,7 @@ BAD:
 
 ### Pattern 3: Decode the Non-Obvious
 
-After a code block, explain the parts a competent reader cannot infer at a glance: the tool's own syntax, novel flags, non-obvious composition, side effects. Skip narrating standard shell.
+After a code block, say what it does as a whole in a sentence, then decode the parts a competent reader cannot infer at a glance: the tool's own syntax, novel flags, non-obvious composition, side effects. Give every code block enough surrounding context that the reader never has to stop and reverse-engineer it. You do not need to define standard shell, but do explain what the command accomplishes and why it belongs here.
 
 Format A, bullet list for the parts that need it:
 > **What matters here:**
@@ -41,7 +41,7 @@ Format A, bullet list for the parts that need it:
 Format B, inline for a single non-obvious command:
 > `hooks.Stop[].matcher`: an empty string matches every Stop event. There is no tool name to filter on for `Stop`, so leave it empty.
 
-Do not decode `mkdir -p`, `cd`, `>`, or `|` for their own sake. If a symbol is load-bearing for the point you are making, call out just that symbol. Otherwise move on.
+You do not need to define `mkdir -p`, `cd`, `>`, or `|` token by token. But do explain what the overall command accomplishes and call out any part that is load-bearing for the point you are making. A bare command with a one-word label is too little. Aim for a short paragraph of context, not a bare list.
 
 ### Pattern 4: Core-Model-First Progression
 
@@ -107,7 +107,8 @@ BAD:
 - No emojis in prose
 
 ### Paragraph Length
-- Keep paragraphs focused. A dense paragraph is fine when it is explaining a real tradeoff or mechanism. Do not pad, and do not artificially chop a coherent explanation into one-sentence fragments.
+- Keep paragraphs focused, but err toward explaining a bit more rather than less. A tutorial is prose with commands in it, not a command list with one-line labels. Surround steps and code with enough explanation that the reasoning and the flow are clear.
+- A dense paragraph is fine when it explains a real mechanism or tradeoff. Do not pad, and do not artificially chop a coherent explanation into one-sentence fragments.
 - Single-sentence paragraphs are fine for emphasis: "That is the whole trick."
 
 ### Section Breaks
@@ -133,7 +134,7 @@ BAD:
 ### Code Blocks
 - Always specify the language for syntax highlighting
 - Keep examples realistic and focused. Prefer a real example over a toy one.
-- Follow a code block with a breakdown of the non-obvious parts (see Pattern 3). You do not need to narrate every line, only the parts the reader cannot infer.
+- Follow a code block with a sentence of context (what it does and why) plus a breakdown of the non-obvious parts (see Pattern 3). You do not need to narrate every trivial token, but never leave a command standing with only a one-line label.
 
 </formatting_rules>
 
@@ -147,11 +148,12 @@ These patterns break the voice. Avoid them.
 2. **Reassurance filler.** No "don't worry," no "if this feels overwhelming, that's normal." Respect the reader's competence. If something is genuinely tricky, name the specific gotcha instead.
 3. **Passive voice.** Not "the file is created," say "this creates the file."
 4. **Hedging.** Not "you might want to consider," say "do this" or "here is the tradeoff."
-5. **Decoding the obvious.** Do not break `mkdir -p` down to "folders on your desktop." Decode only the non-obvious parts.
+5. **Token-by-token narration of the obvious.** Do not break `mkdir -p` down to "folders on your desktop." Explain what the command does as a whole and decode the non-obvious parts, but skip the trivial symbols.
 6. **Unexplained non-obvious code.** The flip side: never show tool-specific syntax or a novel flag and move on. Decode the part that is actually new.
 7. **Vague instructions.** Not "update your config file," say exactly which file, what to add, and where.
 8. **Premature abstraction.** Show the concrete case first, then generalize if useful.
 9. **Bullet point overload.** Don't list 10 things when you can group them into 3 categories of 3-4 each.
 10. **Missing motivation or tradeoffs.** Don't start a section with "how." Start with why you would reach for this, and when you would not.
+11. **Command dumping.** A wall of commands or steps with one-line labels and no connective prose is not a tutorial. Explain the reasoning and the flow between steps. Lean toward explaining a bit more than feels strictly necessary, just not to the point of re-teaching fundamentals.
 
 </anti_patterns>
