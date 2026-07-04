@@ -1,25 +1,23 @@
 ---
 name: config-evolve
-description: "The monthly memory-and-apply layer around Claude Code's built-in /insights command. /insights already analyzes your session history and drafts fixes (CLAUDE.md rules, skills, hooks, headless scripts). config-evolve captures those fixes into a dated, ranked review doc, diffs them against prior months so applied or rejected items never reappear, extends coverage to the change types /insights skips (permission allowlist entries, saved slash commands, MCP servers, settings tweaks), and then applies the ones you approve with backups and verification. It runs automatically right after /insights (via a bundled hook), on a monthly schedule, or on demand with /config-evolve. Use when the user says config-evolve, evolve my config, monthly config checkup, apply my insights suggestions, act on /insights, or what should I add to my Claude setup. It is the ADD layer; hand cleanup and dedup to setup-audit."
+description: "Suggests additive changes to your Claude Code config based on how you actually work. Runs the same way on demand (/config-evolve) or monthly (a scheduled claude -p run): it analyzes your recent usage (prompt history, session transcripts, and the usage report if present) plus your current config, then proposes a ranked set of improvements: a new skill to solve a recurring task, a CLAUDE.md rule, a hook, a permission allowlist entry, a saved slash command, an MCP server, or a settings tweak. Writes a dated review doc, never auto-applies, offers a guided apply for the items you approve (backing up each file first), and remembers past decisions so it never re-suggests what you rejected. Use when the user says config-evolve, evolve my config, monthly config checkup, suggest improvements to my Claude setup, what should I add to my Claude config, or what skill or hook should I build next. It complements setup-audit, which removes bloat and conflicts; config-evolve is the ADD side. If the built-in /insights report is available it folds it in, but it never requires it."
 ---
 
 # config-evolve
 
-Claude Code's built-in `/insights` command reads your session history and writes a report that already includes ready-to-paste fixes: `CLAUDE.md` rules, new skills, hooks, and headless scripts. It is excellent, but it is stateless (it re-suggests the same things every month), it stops at those four fix types, and applying its fixes is manual copy-paste.
+A self-contained advisor for your Claude Code setup. It looks at how you actually worked and proposes a small, high-signal set of *additive* changes: things to build or add so next month runs smoother. It behaves the same whether you run it on demand or a scheduler runs it monthly.
 
-config-evolve is the layer that closes those gaps. It does not re-analyze your usage. It rides on the `/insights` output and adds four things: **memory** (a state file so month N+1 is a diff), **reach** (four more change types), a **durable dated review doc**, and a **safe guided apply** with backups.
+This is the ADD counterpart to `setup-audit`. setup-audit finds bloat, conflicts, and duplicate capabilities and offers to cut them. config-evolve looks for *missing* capabilities and drafts them. If the user asks to clean up or slim down, hand off to setup-audit.
 
-This is the ADD counterpart to `setup-audit`. setup-audit trims bloat, conflicts, and duplicate capabilities. config-evolve proposes and applies new ones. Send removal work there.
+## How it runs
 
-## How it is triggered
-
-- **After `/insights`** (primary): the bundled `UserPromptSubmit` hook fires on `/insights` and injects a directive to run the ANALYZE flow below on the report `/insights` just produced. This is what the monthly scheduled `claude -p "/insights"` job uses (see `references/scheduling.md`).
-- **On demand**: `/config-evolve` runs ANALYZE against the most recent `/insights` output. If none is available this turn, ask the user to run `/insights` first (interactive) or point to the newest saved report.
-- **Apply**: `/config-evolve apply` (or the user replying with item numbers) runs the APPLY flow.
+- **On demand**: `/config-evolve`.
+- **Monthly**: a scheduler runs `claude -p "/config-evolve"` (see `references/scheduling.md`). Same analysis, same proposals.
+- **Apply**: `/config-evolve apply`, or the user replying with item numbers after a run.
 
 ## Two verbs, and why they never mix
 
-- **ANALYZE**: capture fixes, extend, diff, score, write the dated doc, update state, print an apply summary. It changes no config. It is safe to run unattended.
+- **ANALYZE**: gather evidence, propose, score, write the dated doc, update state. Changes no config. Safe to run unattended.
 - **APPLY**: apply the specific items the user picked, with backups and verification.
 
 A single run never analyzes and applies in the same turn. Applying is always a separate, explicit human action. That is what makes the unattended monthly run safe: with no one to pick items, nothing is applied.
@@ -29,7 +27,7 @@ A single run never analyzes and applies in the same turn. Applying is always a s
 - **Output dir**: `$CONFIG_EVOLVE_OUTPUT_DIR`, else `~/.claude/config-evolve/reports/`. Create if missing.
 - **State file**: `~/.claude/config-evolve/state.json`.
 - **Optional config**: `~/.claude/config-evolve/config.json` may set `outputDir`, `thresholds`, `maxProposals`, and `email` (`{ "to": "...", "sendCommand": "..." }`). Read if present.
-- **Scheduled marker**: env `CONFIG_EVOLVE_SCHEDULED=1` means an unattended run. In that case, after writing the doc, run the email `sendCommand` if configured, and stop. Do not print an interactive apply summary.
+- **Scheduled marker**: env `CONFIG_EVOLVE_SCHEDULED=1` means an unattended run. In that case, after writing the doc, run the email `sendCommand` if configured, then stop. Do not print an interactive apply summary.
 
 Never write secrets to any of these files.
 
@@ -37,62 +35,80 @@ Never write secrets to any of these files.
 
 # ANALYZE flow
 
-## 1. Get the insights material
+## 1. Load state
 
-Work from the `/insights` report and fixes available this turn (the hook path always has a fresh one). Read the four fix categories `/insights` produces: `CLAUDE.md` rules, skill files, hooks, headless scripts. Keep each fix verbatim; you will need the exact artifact.
-
-If there is no `/insights` output this turn and you were invoked standalone, stop and ask the user to run `/insights` first. Do not fabricate an analysis. config-evolve rides on `/insights`; it does not replace it.
-
-## 2. Load state and diff
-
-Read `~/.claude/config-evolve/state.json` (schema below). For each `/insights` fix, compute a stable `id` (kebab of its target + intent). Then:
-
-- If `id` disposition is `applied` or `rejected`, drop it (do not re-surface). For `rejected`, that is the whole point of the memory.
-- If seen before as `deferred` or `watching`, increment `timesSeen` and keep it.
-- If new, add it with `timesSeen: 1`, `firstSeen: today`.
+Read `~/.claude/config-evolve/state.json` if it exists (schema below). It records every prior proposal and its disposition, so this run avoids repeating handled ideas. On a first run there is no state; analyze from the start of available history and, interactively, offer to set up the monthly schedule at the end (`references/scheduling.md`).
 
 ```json
 {
   "lastRun": "YYYY-MM-DD",
   "proposals": [
-    { "id": "kebab-id", "title": "...", "type": "claude-md|skill|hook|headless|permission|command|mcp|settings",
-      "source": "insights|config-evolve", "firstSeen": "YYYY-MM-DD", "timesSeen": 2,
+    { "id": "kebab-id", "title": "...", "type": "skill|claude-md|hook|permission|command|mcp|settings",
+      "firstSeen": "YYYY-MM-DD", "timesSeen": 2,
       "disposition": "proposed|applied|rejected|deferred|watching", "resolvedAt": "YYYY-MM-DD|null" }
   ],
   "appliedChangelog": [ { "date": "YYYY-MM-DD", "id": "...", "summary": "..." } ]
 }
 ```
 
-## 3. Extend coverage
+`periodStart` for this run = state's `lastRun`, or earliest available data on a first run.
 
-`/insights` covers `CLAUDE.md`, skills, hooks, and headless scripts. Add the change types it does not emphasize, when the evidence supports them. The signal-to-artifact catalog is in `references/change-types.md` (load it). The four to add here:
+## 2. Gather evidence (read-only)
 
-- **Permission allowlist entry**: the same safe command approved over and over. Draft the `permissions.allow` line.
-- **Saved slash command**: one long prompt reused often with little variation.
-- **MCP server**: repeated manual work against an external service. Scaffold with placeholder credentials only.
-- **Settings tweak**: friction from a default that no longer fits (model tier, output style, statusline, a hand-set env var).
+Look at how the user worked since `periodStart`. Read only; never modify these.
 
-Evidence for these can come from the `/insights` report's own statistics (tool usage, friction types, session types) and its "Features to Try" / "On the Horizon" sections. Do not launch a separate deep transcript crawl; keep this light and mark each `source: config-evolve`.
+**Usage signals**
+- `~/.claude/history.jsonl`: global prompt history. Cluster prompts into recurring task types; note repeated phrasings and corrections.
+- `~/.claude/projects/*/*.jsonl`: session transcripts. Sample the most recent sessions in the window. Look for: multi-step workflows the user re-drives and re-explains; the same safe Bash or MCP command approved over and over; corrections the user repeats ("no, use uv not pip"); context restated across sessions.
+- `~/.claude/usage-data/report*.html`: the usage report, if the user generates one. Pull top projects, active hours, and tool mix to weight where improvements matter.
+- **Optional bonus**: if a recent built-in `/insights` report or summary is saved on disk (for example under the output dir or the user's notes), fold its findings and any fixes it drafted into this run as extra signal. Never require it; config-evolve stands alone.
 
-Mark `id`, `type`, `source`, and disposition for every extended item too, and diff against state exactly as in step 2.
+**Current config surface** (so proposals are non-duplicative and land cleanly)
+- `~/.claude/CLAUDE.md`, project `./CLAUDE.md`, `./.claude/CLAUDE.md`.
+- Skill inventory: names + descriptions under `~/.claude/skills/` (follow symlinks) and installed plugins (`~/.claude/plugins/installed_plugins.json`).
+- `~/.claude/settings.json` and project settings: existing `hooks`, `permissions.allow`, `env`, `model`, `outputStyle`, `statusLine`.
+- MCP servers from settings or `.mcp.json`.
 
-## 4. Score and filter
+Before proposing anything, confirm the capability does not already exist. If a matching skill, hook, rule, or allowlist entry is already present, do not propose it.
 
-Score each surviving proposal: **Impact** 1-5 (monthly time/friction saved), **Confidence** 1-5 (strength of evidence), **Effort** low/med/high. `Priority = Impact x Confidence`, tie-break to lower Effort.
+## 3. Turn signals into proposals
 
-Defaults (override in `config.json`): surface only Confidence >= 3; cap the doc at the top **7**; anything real but under the bar goes on a **Watching** list carried in state, not the doc. This threshold is the dial between coach and nag. Tune it in `config.json` if the user wants it stricter or looser.
+Map each recurring signal to the right kind of config change. The full catalog, with the signal to look for and how to draft each artifact, is in `references/change-types.md` (load it). In short:
+
+| Signal | Proposed change |
+| --- | --- |
+| A multi-step workflow re-driven and re-explained | A new **skill** (draft the SKILL.md) |
+| A preference / correction / context repeated | A **CLAUDE.md** rule (draft the exact line) |
+| A deterministic "always / whenever do X" the model keeps forgetting | A **hook** (draft the script + settings snippet) |
+| The same safe command approved again and again | A **permission** allowlist entry |
+| One long prompt reused often | A saved **slash command** |
+| Repeated manual work against an external service | An **MCP server** (scaffold with placeholder creds) |
+| Friction from a wrong default (model, output style, no statusline) | A **settings** tweak |
+
+For each candidate, draft the actual artifact (the file contents or the exact diff), not a description of it. A proposal the user cannot apply as-is does not belong in the doc. Removal, dedup, and conflict cleanup are out of scope; if you see them, note "run setup-audit" in one line and move on.
+
+## 4. Score, filter, and diff against state
+
+Score each candidate: **Impact** 1-5 (monthly time/friction saved), **Confidence** 1-5 (strength of evidence), **Effort** low/med/high. `Priority = Impact x Confidence`, tie-break to lower Effort.
+
+Then diff against state:
+- Drop anything whose `id` is already `applied` or `rejected` (never re-surface a rejected idea; that is the point of the memory).
+- A prior `deferred` or `watching` item that recurs gets `timesSeen` incremented and stays in play.
+- New candidates start at `timesSeen: 1`, `firstSeen: today`.
+
+Defaults (override in `config.json`): surface only candidates that recurred **>= 3 times** with **Confidence >= 3**; cap the doc at the top **7**. Anything real but under the bar goes on a **Watching** list carried in state, not the doc. This threshold is the dial between coach and nag; tune it in `config.json` if the user wants it stricter or looser.
 
 ## 5. Write the dated review doc
 
-Write `<outputDir>/config-evolve-<YYYY-MM-DD>.md` using `references/review-template.md`. Every proposal carries its evidence, the ready-to-apply artifact (verbatim), its score, and a `[source: insights|config-evolve]` tag. Include a Watching list and a Changelog of what was applied since last run (from state). Writing the doc changes no config.
+Write `<outputDir>/config-evolve-<YYYY-MM-DD>.md` using `references/review-template.md`: a header (period, sessions analyzed), the ranked proposals each with evidence + the ready-to-apply artifact + score, a Watching list, and a Changelog of what was applied since last run (from state). Writing the doc changes no config.
 
 ## 6. Deliver and record
 
-Update `state.json`: set `lastRun` to today and merge this run's proposals.
+Update `state.json`: set `lastRun` to today and merge this run's proposals (new ids added, recurring ids updated).
 
 Then:
 - **Scheduled run** (`CONFIG_EVOLVE_SCHEDULED=1`): run the email `sendCommand` if configured, then stop. Do not offer apply.
-- **Interactive run**: print a compact numbered summary (title, type, source, one-line evidence, priority) and tell the user to reply with the item numbers to apply, or run `/config-evolve apply`.
+- **Interactive run**: print a compact numbered summary (title, type, one-line evidence, priority) and tell the user to reply with the item numbers to apply, or run `/config-evolve apply`.
 
 ---
 
@@ -119,5 +135,4 @@ Never apply an item the user did not pick. Never edit a file you have not read t
 - One dated backup per touched file, before editing. `settings.json` re-validated after.
 - No secrets in the doc, state, or config. MCP proposals ship placeholder credentials only.
 - Cap the doc at the top proposals; the rest go on Watching. Do not flood.
-- config-evolve rides on `/insights`; it never invents an analysis when none exists.
 - Adding capabilities only. Removal, dedup, and conflicts go to setup-audit (note in one line, do not act).

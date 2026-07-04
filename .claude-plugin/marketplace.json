@@ -7,8 +7,8 @@
     {
       "name": "config-evolve",
       "source": "./plugins/config-evolve",
-      "description": "Monthly memory-and-apply layer around the built-in /insights command. A bundled hook augments /insights so its fixes are captured into a dated, ranked review doc, diffed against prior months so applied or rejected items never reappear, and extended with the change types /insights skips (permission allowlist entries, saved slash commands, MCP servers, settings tweaks). Applies what you approve with backups. Runs after /insights, on a monthly schedule, or on demand. Complements setup-audit by focusing on what to add",
-      "version": "1.0.0"
+      "description": "Suggests additive changes to your Claude Code config from how you actually work. Runs the same on demand or monthly: analyzes your recent usage and current config, then proposes a ranked set of ready-to-apply improvements (a new skill, a CLAUDE.md rule, a hook, a permission allowlist entry, a saved slash command, an MCP server, or a settings tweak). Writes a dated review doc, never auto-applies, offers a guided apply with backups, and remembers past decisions so it never re-suggests what you rejected. Complements setup-audit by focusing on what to add",
+      "version": "1.1.0"
     },
     {
       "name": "changelog-monitor",

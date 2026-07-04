@@ -17,8 +17,7 @@ Write the review doc with this structure. Fill every drafted artifact in full so
 ## Proposals (ranked)
 
 ### 1. <Title>
-- **Type:** claude-md | skill | hook | headless | permission | command | mcp | settings
-- **Source:** insights | config-evolve
+- **Type:** skill | claude-md | hook | permission | command | mcp | settings
 - **Evidence:** <what triggered this, with counts and a concrete example>
 - **Benefit:** <what it saves each month>
 - **Score:** Impact <1-5> · Confidence <1-5> · Effort <low/med/high> · Priority <n>
