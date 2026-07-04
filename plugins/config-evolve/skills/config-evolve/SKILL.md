@@ -30,6 +30,7 @@ A single run never analyzes and applies in the same turn. Applying is always a s
 - **State file**: `~/.claude/config-evolve/state.json`.
 - **Optional config**: `~/.claude/config-evolve/config.json` may set `outputDir`, `thresholds`, `maxProposals`, `insightsTools`, and `email` (`{ "to": "...", "sendCommand": "..." }`). Read if present.
 - **Scheduled marker**: env `CONFIG_EVOLVE_SCHEDULED=1` means an unattended run. In that case, after writing the doc, run the email `sendCommand` if configured, then stop. Do not print an interactive apply summary.
+- **Nested-run marker**: config-evolve sets env `CONFIG_EVOLVE_RUNNING=1` on the `/insights` it launches. If you have your own `/insights` hooks (for example a summary or email hook), check this var and exit early so they do not double-fire on config-evolve's internal analysis run.
 
 Never write secrets to any of these files.
 
@@ -63,7 +64,9 @@ mkdir -p "$OUT"
 RAW="$OUT/insights-raw-$(date +%F).md"
 # Reuse today's report if it already exists; do not pay for /insights twice in one day.
 if [ ! -s "$RAW" ]; then
-  timeout 900 claude -p "/insights" \
+  # CONFIG_EVOLVE_RUNNING lets a user's own /insights hooks detect and skip this nested run
+  # (so a personal summary/email hook does not double-fire on config-evolve's internal analysis).
+  CONFIG_EVOLVE_RUNNING=1 timeout 900 claude -p "/insights" \
     --allowedTools "Bash,Read,Glob,Grep,WebFetch,WebSearch" \
     > "$RAW" 2> "$OUT/insights.err.log" || true
 fi
