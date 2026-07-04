@@ -13,6 +13,7 @@ Add this marketplace to Claude Code:
 Then install any plugin:
 
 ```sh
+/plugin install config-evolve@digitaljavelina-plugins
 /plugin install changelog-monitor@digitaljavelina-plugins
 /plugin install migrate-ai-config@digitaljavelina-plugins
 /plugin install setup-audit@digitaljavelina-plugins
@@ -25,6 +26,7 @@ Then install any plugin:
 
 | Plugin              | Version | Description                                                                                                                                                                                                                                                                                                                      |
 | ------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `config-evolve`     | 1.0.0   | The monthly memory-and-apply layer around Claude Code's built-in `/insights`. A bundled hook augments `/insights` so its fixes (`CLAUDE.md` rules, skills, hooks, headless scripts) are captured into a dated, ranked review doc, diffed against prior months so applied or rejected items never reappear, and extended with the change types `/insights` skips (permission allowlist entries, saved slash commands, MCP servers, settings tweaks). Applies the items you approve with backups and verification. Runs after `/insights`, on a monthly schedule, or on demand with `/config-evolve`. Complements `setup-audit` by focusing on what to add, not what to cut. |
 | `changelog-monitor` | 1.1.3   | Monitor the Claude Code changelog for new versions. Run `/changelog-monitor` to check once, or `/loop /changelog-monitor` to monitor continuously.                                                                                                                                                                               |
 | `migrate-ai-config` | 1.1.0   | Interactively migrate Claude Code and/or Codex config (skills, hooks, plugins, commands, agents, MCP servers, prompts, settings) and optionally chat history (`.jsonl` transcripts, so past conversations are preserved and resumable) between macOS, Windows, and Linux. Asks source/target OS, tools, and history scope, then emits a tailored migration playbook. |
 | `setup-audit`       | 1.0.0   | Audit a Claude Code installation on two tracks: instruction files (`CLAUDE.md`, skills, settings, hooks) for bloat, conflicts, and redundancy, and the skill/plugin inventory for duplicate and overlapping capabilities. Reports findings, then offers to remove flagged items after confirmation, backing up everything first. |
@@ -34,7 +36,11 @@ Then install any plugin:
 
 ### Prerequisites
 
-Most plugins run with no extra setup. Two have external dependencies: `yt-tutorial` and `transcript-to-notebooklm`.
+Most plugins run with no extra setup. `config-evolve` builds on a Claude Code feature, and two have external dependencies: `yt-tutorial` and `transcript-to-notebooklm`.
+
+#### config-evolve
+
+No install needed. It rides on Claude Code's built-in `/insights` command: run `/insights` and the bundled hook does the rest. To run it unattended each month, see the plugin's `references/scheduling.md` for a cloud-routine, `launchd`/`cron`, or `SessionStart`-nudge setup (each just runs `claude -p "/insights"` on the 1st). `/insights` needs a few weeks of session history before its reports are useful.
 
 #### yt-tutorial
 

@@ -1,0 +1,15 @@
+{
+  "description": "config-evolve: when you run /insights, augment it so its fixes are captured into a dated review doc, diffed against prior months, extended with permission/command/mcp/settings changes, and left ready for a guided apply (or emailed on a scheduled run). Never applies anything in the same turn.",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/insights-augment.sh\""
+          }
+        ]
+      }
+    ]
+  }
+}
