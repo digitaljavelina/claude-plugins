@@ -1,7 +1,7 @@
 {
   "name": "config-evolve",
-  "version": "1.1.0",
-  "description": "Suggests additive changes to your Claude Code config based on how you actually work. Runs the same on demand (/config-evolve) or monthly (a scheduled claude -p run): it analyzes your recent usage and current config, then proposes a ranked set of improvements (a new skill, a CLAUDE.md rule, a hook, a permission allowlist entry, a saved slash command, an MCP server, or a settings tweak), each drafted ready to apply. Writes a dated review doc, never auto-applies, offers a guided apply for approved items with backups, and remembers past decisions so it never re-suggests what you rejected. Self-contained; complements setup-audit by focusing on what to add.",
+  "version": "1.2.0",
+  "description": "Runs Claude Code's built-in /insights command for you and turns its report into applied config improvements. On demand (/config-evolve) or monthly (a scheduled claude -p run) it generates a fresh /insights analysis under the hood, captures the fixes it drafts (CLAUDE.md rules, skills, hooks, headless scripts), extends them with the change types /insights skips (permission allowlist entries, saved slash commands, MCP servers, settings tweaks), diffs everything against prior months so applied or rejected items never reappear, writes a dated review doc, and applies the ones you approve with backups. Never auto-applies. Complements setup-audit by focusing on what to add.",
   "author": {
     "name": "Digital Javelina",
     "email": "mike@digitaljavelina.com"
