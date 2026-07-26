@@ -50,7 +50,7 @@
       "name": "bag-submission",
       "source": "./plugins/bag-submission",
       "description": "Package a prompt, skill, or workflow into a finished Bag Submission post for The AI Clinicians' Medical Bag, with the community's three rules enforced and a patient-data-free check",
-      "version": "1.0.0"
+      "version": "1.0.1"
     }
   ]
 }
