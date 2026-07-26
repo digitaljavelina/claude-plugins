@@ -53,11 +53,10 @@ Before you finish the entry, hold it against the three rules the whole bag runs 
 
 **2. It bans invention.** Does the prompt or skill fill gaps when it does not have the facts? A model that knows a form wants "failed two prior agents" will write that sentence to complete the pattern, and that is a false statement over the member's signature. The entry has to say, in its own text, that missing information is marked absent, never invented. Check specifically for made-up citations, codes, doses, durations, and numbers. If the ban is not in there, help them write it in.
 
-**3. It ends with a real verify.** The 60-second verify field is required, and it has to be three specific things to look at, not a line of fine print. Coach them here:
+**3. It ends with a real verify.** The 60-second verify field is required. It needs one specific thing to look at, not a line of fine print. Keep it to a single check so a busy newcomer is never blocked. A member can add more if they want, but one real check is enough to feature it. Coach them here:
    - "Check the doses in the draft against the source note" is a verify.
    - "Use clinical judgment" is not. It names nothing.
    - If they give you a vague check, ask: what is the one thing most likely to be wrong in this output, and how would someone spot it in ten seconds? Turn the answer into the check.
-   - You want three. If they can only think of one, work the other two out with them from what the tool actually does.
 
 On top of the three: a member who has never seen this entry has to be able to run it from the entry alone. If the "how to run it" assumes setup or context that is not written down, name the gap and have them fill it.
 
@@ -87,10 +86,7 @@ What it does:    <one or two plain sentences>
 How to run it:
 <the paste-ready prompt, the install steps, or the recipe>
 
-60-second verify:
-1. <specific check>
-2. <specific check>
-3. <specific check>
+60-second verify: <one specific thing the user checks in the output>
 
 Patient-data-free: yes
 ```
@@ -134,9 +130,7 @@ tags: [medical-bag, <type>]
 <the paste-ready prompt, install steps, or recipe, in a fenced code block>
 
 ## 60-second verify
-1. <specific check>
-2. <specific check>
-3. <specific check>
+<one specific thing the user checks in the output>
 
 ## Patient-data-free
 Yes. <one line on why it needs no patient data>
