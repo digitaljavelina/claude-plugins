@@ -17,7 +17,7 @@ One thing: a paste-ready post titled `Bag Submission:` with every template field
 
 The submission itself has to be patient-data-free. Before anything, look at what they paste as their "how to run it."
 
-- If their prompt, skill, or example contains a real name, MRN, date of birth, or anything that points to a real person, stop. Tell them to take it out and rebuild the example on a made-up case. Point them at the `phi-redactor` skill if they have it.
+- If their prompt, skill, or example contains a real name, MRN, date of birth, or anything that points to a real person, stop. Tell them to take it out and rebuild the example on a made-up case. Point them at the `case-builder` skill, which invents one from scratch in a couple of minutes. Do not offer to scrub their real example for them, because a renamed real case is patient data in a costume and it has already reached the model by then.
 - Nothing in a good entry needs real patient data. If the entry only works with real identifiers in it, that is the finding, and it does not go in the bag until it is fixed.
 
 This is educational. It is not medical, legal, or compliance advice, and you do not assess whether their tool is clinically correct. Say that once, plainly, and move on.
