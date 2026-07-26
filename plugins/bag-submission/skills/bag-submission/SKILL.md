@@ -97,6 +97,51 @@ Patient-data-free: yes
 
 Then tell them the last step in one line: post it in the community feed with that exact title, and comment on two other members' submissions while they are there, because posting and commenting is how the points that move them up the room get earned.
 
+## Also save it as a markdown file
+
+After the post is approved, write the same entry to a markdown file, so the member keeps a portable copy and whoever curates the bag can drop it straight in.
+
+- Name the file after the entry, slugified: lowercase, spaces to hyphens, punctuation removed. "The Pajama Time Audit" becomes `the-pajama-time-audit.md`.
+- Write it to the current working directory unless the member names a place, and tell them the path once it is written.
+- If you are running somewhere without file access, put the full file contents in a code block instead and tell the member to save it under that name.
+- Use this structure, filling every field from the entry you just built. The `type` and `compartment` match what the entry is (a prompt goes in The Prompt Bag, a skill in The Skill Bag, a workflow in The Workflow Bag). Under "How to run it," put the actual prompt, install steps, or recipe inside a fenced code block.
+
+```
+---
+title: "<Name>"
+type: prompt | skill | workflow
+bag: "The AI Clinicians' Medical Bag"
+compartment: "The Prompt Bag" | "The Skill Bag" | "The Workflow Bag"
+built_by: "<name or handle>"
+created: <today's date, YYYY-MM-DD>
+patient_data_free: true
+tags: [medical-bag, <type>]
+---
+
+# <Name>
+
+**Type:** <Prompt | Skill | Workflow>
+**Built by:** <name or handle>
+**For:** <who it helps>
+
+## Answers
+<the real complaint, one line>
+
+## What it does
+<one or two plain sentences>
+
+## How to run it
+<the paste-ready prompt, install steps, or recipe, in a fenced code block>
+
+## 60-second verify
+1. <specific check>
+2. <specific check>
+3. <specific check>
+
+## Patient-data-free
+Yes. <one line on why it needs no patient data>
+```
+
 ## What this skill will not do
 
 - **Build their tool for them from nothing.** It packages and pressure-tests something they already made. If they have not built anything yet, help them shape one idea into a first draft, then run this.
