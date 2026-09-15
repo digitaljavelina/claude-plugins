@@ -1,0 +1,18 @@
+{
+  "name": "prompt-master",
+  "version": "1.5.0",
+  "description": "Generates a single production-ready prompt for any AI tool (LLM, coding agent, image AI, video AI) from a rough idea. Identifies the target tool, extracts the user's actual intent, and outputs one paste-ready, token-efficient prompt with no framework names or prompting theory. Use when writing, fixing, improving, or adapting a prompt.",
+  "author": {
+    "name": "Digital Javelina",
+    "email": "mike@digitaljavelina.com"
+  },
+  "homepage": "https://github.com/digitaljavelina/claude-plugins",
+  "repository": "https://github.com/digitaljavelina/claude-plugins",
+  "keywords": [
+    "claude-code",
+    "prompt-engineering",
+    "prompt-optimization",
+    "llm",
+    "productivity"
+  ]
+}
