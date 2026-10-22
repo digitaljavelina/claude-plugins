@@ -51,6 +51,12 @@
       "source": "./plugins/prompt-master",
       "description": "Generates a single production-ready prompt for any AI tool (LLM, coding agent, image AI, video AI) from a rough idea. Identifies the target tool, extracts the user's actual intent, and outputs one paste-ready, token-efficient prompt with no framework names or prompting theory. Use when writing, fixing, improving, or adapting a prompt.",
       "version": "1.5.0"
+    },
+    {
+      "name": "future-self",
+      "source": "./plugins/future-self",
+      "description": "Run the Future-Self Prompt: narrate a day in your life 3 years out, keep what feels real, turn it into a daily routine and 90-day plan, and save each quarterly run to one vault note for comparison.",
+      "version": "1.0.0"
     }
   ]
 }

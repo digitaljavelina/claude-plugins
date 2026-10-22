@@ -1,0 +1,19 @@
+{
+  "name": "future-self",
+  "version": "1.0.0",
+  "description": "Run the Future-Self Prompt: write what you want a few years out, get a day in that life narrated back, keep the parts that feel real, then turn them into a daily routine and a 90-day plan. Saves each run to one running vault note so quarterly re-runs can be compared.",
+  "author": {
+    "name": "Digital Javelina",
+    "email": "mike@digitaljavelina.com"
+  },
+  "homepage": "https://github.com/digitaljavelina/claude-plugins",
+  "repository": "https://github.com/digitaljavelina/claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "goals",
+    "planning",
+    "future-self",
+    "quarterly-review",
+    "90-day-plan"
+  ]
+}
