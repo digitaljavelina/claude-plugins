@@ -51,6 +51,12 @@
       "source": "./plugins/future-self",
       "description": "Run the Future-Self Prompt: narrate a day in your life 3 years out, keep what feels real, turn it into a daily routine and 90-day plan, and save each quarterly run to one vault note for comparison.",
       "version": "1.0.0"
+    },
+    {
+      "name": "megarag",
+      "source": "./plugins/megarag",
+      "description": "Phase-by-phase builder for a multimodal RAG app (docs, images, video, audio, knowledge graph, 5 query modes, cited streaming chat) on Next.js 16, Supabase pgvector, Gemini, Docling, and the Workflow SDK. October 2026 refresh of the MegaRAG Build Prompts guide, with a tested schema.",
+      "version": "1.0.0"
     }
   ]
 }

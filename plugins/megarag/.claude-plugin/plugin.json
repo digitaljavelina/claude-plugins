@@ -1,0 +1,22 @@
+{
+  "name": "megarag",
+  "version": "1.0.0",
+  "description": "Phase-by-phase builder for MegaRAG, a multimodal RAG app (documents, images, video, audio, knowledge graph, 5 query modes, streaming cited chat) on Next.js 16, Supabase pgvector, Gemini, Docling, and the Vercel Workflow SDK. Updated October 2026 from the December 2025 MegaRAG Build Prompts guide: dead embedding and model APIs replaced, hybrid search, reranking, contextual retrieval, RLS, and an evaluation phase added. Includes a tested schema migration.",
+  "author": {
+    "name": "Digital Javelina",
+    "email": "mike@digitaljavelina.com"
+  },
+  "homepage": "https://github.com/digitaljavelina/claude-plugins",
+  "repository": "https://github.com/digitaljavelina/claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "rag",
+    "multimodal",
+    "knowledge-graph",
+    "supabase",
+    "pgvector",
+    "gemini",
+    "docling",
+    "nextjs"
+  ]
+}

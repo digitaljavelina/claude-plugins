@@ -20,6 +20,8 @@ Then install any plugin:
 /plugin install yt-tutorial@digitaljavelina-plugins
 /plugin install transcript-to-notebooklm@digitaljavelina-plugins
 /plugin install prompt-master@digitaljavelina-plugins
+/plugin install future-self@digitaljavelina-plugins
+/plugin install megarag@digitaljavelina-plugins
 ```
 
 ## Available Plugins
@@ -33,6 +35,8 @@ Then install any plugin:
 | `yt-tutorial`       | 1.0.0   | Turn a YouTube video into a complete, beginner-friendly, publication-ready tutorial. Fetches the transcript with `yt-dlp` / `youtube-transcript-api`, optionally researches real-world examples, and rewrites the content in a conversational explainer voice with every code block decoded line by line.                         |
 | `transcript-to-notebooklm` | 1.0.0 | Clean `.srt` / `.vtt` subtitles or any timestamped transcript into plain `.txt` (strips timecodes, cue indices, and tags, de-dups rolling captions, reflows into paragraphs), then create a NotebookLM notebook and upload the cleaned files as sources. Handles a whole mixed folder in one pass and passes already-clean transcripts through untouched. |
 | `prompt-master`     | 1.5.0   | Generate a single production-ready prompt for any AI tool (LLM, coding agent, image AI, video AI) from a rough idea. Identifies the target tool, extracts your actual intent, and outputs one paste-ready, token-efficient prompt with no framework names and no prompting theory. Covers Claude, GPT, reasoning models, Gemini, local models, coding agents, image/video/3D/voice AI, and workflow tools. |
+| `future-self` | 1.0.0 | Run the Future-Self Prompt: write what you want a few years out, get one day in that life narrated back, keep the parts that feel real, then turn them into a daily routine and a 90-day plan. Saves every quarterly run to one Obsidian note and compares it with the last. |
+| `megarag` | 1.0.0 | Build a multimodal RAG app phase by phase with Claude Code: documents, images, video, audio, a knowledge graph, 5 query modes, and streaming chat with citations, on Next.js 16, Supabase pgvector, Gemini, Docling, and the Workflow SDK. An October 2026 refresh of the December 2025 MegaRAG Build Prompts guide, with a tested schema migration, hybrid search, reranking, and an evaluation phase. |
 
 ### Prerequisites
 
