@@ -17,7 +17,6 @@ Then install any plugin:
 /plugin install changelog-monitor@digitaljavelina-plugins
 /plugin install migrate-ai-config@digitaljavelina-plugins
 /plugin install setup-audit@digitaljavelina-plugins
-/plugin install claude-usage@digitaljavelina-plugins
 /plugin install yt-tutorial@digitaljavelina-plugins
 /plugin install transcript-to-notebooklm@digitaljavelina-plugins
 /plugin install prompt-master@digitaljavelina-plugins
@@ -31,7 +30,6 @@ Then install any plugin:
 | `changelog-monitor` | 1.1.3   | Monitor the Claude Code changelog for new versions. Run `/changelog-monitor` to check once, or `/loop /changelog-monitor` to monitor continuously.                                                                                                                                                                               |
 | `migrate-ai-config` | 1.1.0   | Interactively migrate Claude Code and/or Codex config (skills, hooks, plugins, commands, agents, MCP servers, prompts, settings) and optionally chat history (`.jsonl` transcripts, so past conversations are preserved and resumable) between macOS, Windows, and Linux. Asks source/target OS, tools, and history scope, then emits a tailored migration playbook. |
 | `setup-audit`       | 1.0.0   | Audit a Claude Code installation on two tracks: instruction files (`CLAUDE.md`, skills, settings, hooks) for bloat, conflicts, and redundancy, and the skill/plugin inventory for duplicate and overlapping capabilities. Reports findings, then offers to remove flagged items after confirmation, backing up everything first. |
-| `claude-usage`      | 1.0.0   | Report Claude Code usage from local session transcripts: total active hours, session count, date range, and per-month / per-project breakdowns. Estimates hands-on-keyboard time by capping idle gaps; points to `ccusage` for token and cost data.                                                                              |
 | `yt-tutorial`       | 1.0.0   | Turn a YouTube video into a complete, beginner-friendly, publication-ready tutorial. Fetches the transcript with `yt-dlp` / `youtube-transcript-api`, optionally researches real-world examples, and rewrites the content in a conversational explainer voice with every code block decoded line by line.                         |
 | `transcript-to-notebooklm` | 1.0.0 | Clean `.srt` / `.vtt` subtitles or any timestamped transcript into plain `.txt` (strips timecodes, cue indices, and tags, de-dups rolling captions, reflows into paragraphs), then create a NotebookLM notebook and upload the cleaned files as sources. Handles a whole mixed folder in one pass and passes already-clean transcripts through untouched. |
 | `prompt-master`     | 1.5.0   | Generate a single production-ready prompt for any AI tool (LLM, coding agent, image AI, video AI) from a rough idea. Identifies the target tool, extracts your actual intent, and outputs one paste-ready, token-efficient prompt with no framework names and no prompting theory. Covers Claude, GPT, reasoning models, Gemini, local models, coding agents, image/video/3D/voice AI, and workflow tools. |

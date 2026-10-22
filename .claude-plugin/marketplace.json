@@ -29,12 +29,6 @@
       "version": "1.0.0"
     },
     {
-      "name": "claude-usage",
-      "source": "./plugins/claude-usage",
-      "description": "Report Claude Code usage from local transcripts: total active hours, sessions, date range, and per-month / per-project breakdowns",
-      "version": "1.0.0"
-    },
-    {
       "name": "yt-tutorial",
       "source": "./plugins/yt-tutorial",
       "description": "Turn a YouTube video into a complete, beginner-friendly, publication-ready tutorial: fetch the transcript, research examples, and rewrite in a conversational explainer voice",
