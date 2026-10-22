@@ -11,12 +11,6 @@
       "version": "1.2.1"
     },
     {
-      "name": "migrate-ai-config",
-      "source": "./plugins/migrate-ai-config",
-      "description": "Interactively migrate Claude Code and/or Codex config between macOS, Windows, and Linux",
-      "version": "1.0.3"
-    },
-    {
       "name": "setup-audit",
       "source": "./plugins/setup-audit",
       "description": "Audit a Claude Code installation for bloat, conflicts, and duplicate/overlapping skills and plugins",
