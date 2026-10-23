@@ -1,7 +1,7 @@
 {
   "name": "setup-audit",
   "version": "1.0.0",
-  "description": "Audit a Claude Code installation on two tracks: instruction files (CLAUDE.md, skills, settings, hooks) for bloat/conflicts/redundancy, and the installed skill/plugin inventory for duplicate and overlapping capabilities. Reports findings, then offers to remove flagged items after confirmation with backups.",
+  "description": "Audit a Claude Code installation on three tracks: instruction files (CLAUDE.md, skills, settings, hooks) for bloat/conflicts/redundancy, the installed skill/plugin inventory for duplicate and overlapping capabilities, and real skill usage from session history. Reports findings, then offers to remove or archive flagged items after confirmation with backups.",
   "author": {
     "name": "Digital Javelina",
     "email": "mike@digitaljavelina.com"
@@ -16,6 +16,7 @@
     "skills",
     "plugins",
     "configuration",
-    "deduplication"
+    "deduplication",
+    "usage"
   ]
 }
